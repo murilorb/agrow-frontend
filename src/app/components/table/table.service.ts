@@ -15,11 +15,11 @@ export class TableService {
   constructor(private http: HttpClient) { }
   
   getForms(): Observable<FormModel[]> {
-    return this.http.get<FormModel[]>(`${URL}/formularios`);      
+    return this.http.get<FormModel[]>(`https://agrow-teste-api.herokuapp.com/formularios`);      
   }
 
   deleteForm(id: number): Observable<void> {
-    return this.http.delete<void>(`${URL}/formularios/${id}`)
+    return this.http.delete<void>(`https://agrow-teste-api.herokuapp.com/formularios/${id}`)
   }
 
 }
