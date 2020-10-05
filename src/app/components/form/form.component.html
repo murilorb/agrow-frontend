@@ -1,0 +1,55 @@
+
+<div *ngIf="formToSave.invalid && formToSave.dirty" class="alert alert-danger"> 
+  Preencha todos os campos corretamente!
+</div>
+<div class="d-flex justify-content-center">
+    <div class="container mt-5 mb-5">
+       <h1>{{ editing ? 'Editar' : 'Novo' }}</h1>
+     <form #formToSave="ngForm" (ngSubmit)="save(formToSave)" autocomplete="off">
+         <div class="form-group">
+           <label for="clientFormControl">Cliente</label>
+           <input type="text" class="form-control" id="clientFormControl" placeholder="Nome do cliente" name="client" 
+            [(ngModel)]='form.client' required minlength="3" #nomeCliente="ngModel">
+
+            <div *ngIf="nomeCliente.hasError('required') && nomeCliente.touched" class="inputAlert">Informe o nome do cliente.</div>     
+            <div *ngIf="nomeCliente.hasError('minlength') && nomeCliente.touched" class="inputAlert">O nome do cliente precisa ter no mínimo 3 caracteres.</div>     
+         </div>
+
+         <div class="form-group">
+            <label for="requesterFormControl">Solicitante</label>
+            <input type="text" class="form-control" id="requesterFormControl" placeholder="Nome do solicitante" name="requester" 
+              [(ngModel)]='form.requester' required minlength="3" #nomeSolicitante="ngModel">
+
+              <div *ngIf="nomeSolicitante.hasError('required') && nomeSolicitante.touched" class="inputAlert">Informe o nome do solicitante.</div>
+              <div *ngIf="nomeSolicitante.hasError('minlength') && nomeSolicitante.touched" class="inputAlert">O nome do solicitante precisa ter no mínimo 3 caracteres.</div>
+         </div>
+
+         <div class="form-group">
+            <label for="dateFormControl">Data limite</label>
+            <input type="text" class="form-control" id="dateFormControl" placeholder="Data" name="date" [(ngModel)]='form.date' required #data="ngModel" mask='00/00/0000' >
+            
+            <div *ngIf="data.hasError('required') && data.touched" class="inputAlert">Informe a data.</div>
+
+         </div>
+         
+         <div class="form-group">
+             <label for="descriptionFormControl">Descrição</label>
+             <textarea class="form-control" id="descriptionFormControl" rows="3" name="description" 
+                [(ngModel)]='form.description' required  minlength="10" #descricao="ngModel"></textarea>
+
+              <div *ngIf="descricao.hasError('required') && descricao.touched" class="inputAlert">Informe uma descrição.</div>
+              <div *ngIf="descricao.hasError('minlength') && descricao.touched" class="inputAlert">A descrição precisa ter no mínimo 10 caracteres.</div>
+         </div>
+
+         <div class="form-group">
+            <label for="requesterFormControl">Responsável</label>
+            <input type="text" class="form-control" id="responsibleFormControl" placeholder="Nome do responsável" name="responsible" 
+              [(ngModel)]='form.responsible' required minlength="3" #nomeResponsavel="ngModel">
+
+              <div *ngIf="nomeResponsavel.hasError('required') && nomeResponsavel.touched" class="inputAlert">Informe o nome do responsável.</div>
+              <div *ngIf="nomeResponsavel.hasError('minlength') && nomeResponsavel.touched" class="inputAlert">O nome do responsável precisa ter no mínimo 3 caracteres.</div>
+          </div>
+         <button type="submit" class="btn btn-primary" (click)="saveFormData" [disabled]="!formToSave.valid">Salvar</button>
+       </form>
+    </div>
+ </div>

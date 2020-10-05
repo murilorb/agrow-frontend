@@ -88,7 +88,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css"                         
             ],
             "scripts": []
           }
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "agrow-frontend"
+    }
+  },
+  "defaultProject": "agrow-frontend",
+  "cli": {
+    "analytics": "9ab6cabe-5d86-4100-a3e7-1c9e9f6236ab"
+  }
 }

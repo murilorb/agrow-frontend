@@ -1,0 +1,16 @@
+button {
+    margin: 1px
+}
+
+.breakAll {
+    word-break: break-all;
+}
+
+
+
+
+@media screen and (max-width: 720px) {
+    .table-box {
+        margin-left: 0;        
+    }
+}
