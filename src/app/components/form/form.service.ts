@@ -3,16 +3,19 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 
 import { FormModel } from '../../models/FormModel'
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormService {
 
+  URL = environment.apiUrl
+
   constructor(private http: HttpClient) { }
 
   getForm(id: number): Observable<FormModel> {
-    return this.http.get<FormModel>(`https://aw-agrow-api.herokuapp.com/formularios/${id}`);      
+    return this.http.get<FormModel>(`${URL}/formularios/${id}`);      
   }
 
   saveForm(form: FormModel): Observable<FormModel> {
@@ -23,7 +26,7 @@ export class FormService {
     const finalDate = `${day}/${month}/${year}`
     form.date = finalDate
     
-    return this.http.post<FormModel>('https://aw-agrow-api.herokuapp.com/formularios', form)
+    return this.http.post<FormModel>(`${URL}/formularios`, form)
   }
 
   updateForm(form: FormModel): Observable<FormModel> {
@@ -39,7 +42,7 @@ export class FormService {
 
     
 
-    return this.http.put<FormModel>(`https://aw-agrow-api.herokuapp.com/formularios/${form.id}`, form)
+    return this.http.put<FormModel>(`${URL}/formularios/${form.id}`, form)
   }
 
 
